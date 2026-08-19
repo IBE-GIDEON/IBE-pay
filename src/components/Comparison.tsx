@@ -1,4 +1,3 @@
-import { LogoMark } from "./Logo";
 import { BANKS } from "./BankCards";
 
 /**
@@ -98,11 +97,8 @@ export default function Comparison() {
 
         {/* the wallet, holding everything */}
         <div className="border-ink/10 mt-8 rounded-3xl border bg-white/70 p-5 backdrop-blur sm:p-6">
-          <span className="text-ink inline-flex items-center gap-2">
-            <LogoMark className="h-5 w-5" />
-            <span className="text-[12px] font-extrabold tracking-[0.18em] uppercase">
-              Inside IBE Pay
-            </span>
+          <span className="text-ink text-[12px] font-extrabold tracking-[0.18em] uppercase">
+            Inside IBE Pay
           </span>
 
           <ul className="mt-4 flex flex-wrap items-center gap-2.5">
@@ -139,7 +135,9 @@ export default function Comparison() {
                   What they can&rsquo;t do on their own
                 </th>
                 <th className="text-ink w-[18%] rounded-t-xl bg-white px-3 py-4 text-center">
-                  <LogoMark className="mx-auto h-5 w-5" />
+                  <span className="text-[11px] font-extrabold tracking-[0.14em] uppercase">
+                    IBE Pay
+                  </span>
                 </th>
                 <th className="w-[18%] rounded-t-xl bg-white/60 px-3 py-4 text-center">
                   <AppleMark className="text-ink mx-auto h-4 w-4" />
