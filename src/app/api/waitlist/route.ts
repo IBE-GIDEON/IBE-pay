@@ -47,7 +47,10 @@ export async function POST(req: Request) {
       console.error("[waitlist] forward failed", err);
     }
   } else {
-    console.log("[waitlist]", JSON.stringify(record));
+    console.warn(
+      "[waitlist] WAITLIST_WEBHOOK_URL is not set - this signup is NOT stored:",
+      JSON.stringify(record),
+    );
   }
 
   return NextResponse.json({ ok: true });
