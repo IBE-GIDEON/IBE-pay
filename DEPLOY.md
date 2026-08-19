@@ -1,4 +1,4 @@
-# Deploying IBE Pay
+﻿# Deploying IBE Pay
 
 ## 1. Somewhere to keep the signups (free)
 
@@ -18,7 +18,6 @@ function doPost(e) {
 
 ```bash
 npm i -g vercel
-cd web
 vercel
 ```
 
@@ -41,3 +40,4 @@ A `.com.ng` runs about NGN 10-15k a year; a `.com` about USD 12.
   logged server-side and the visitor still sees success - losing a signup is
   worse than an unrecorded one.
 - With no `WAITLIST_WEBHOOK_URL` set, signups go to the server console.
+
