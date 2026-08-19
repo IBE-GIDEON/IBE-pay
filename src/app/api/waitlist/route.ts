@@ -31,7 +31,7 @@ export async function POST(req: Request) {
   }
 
   const painPoint =
-    typeof body.painPoint === "string" ? body.painPoint.slice(0, 60) : null;
+    typeof body.painPoint === "string" ? body.painPoint.trim().slice(0, 200) : null;
 
   const record = { email, painPoint, at: new Date().toISOString() };
   const hook = process.env.WAITLIST_WEBHOOK_URL;

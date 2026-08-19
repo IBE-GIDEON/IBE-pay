@@ -24,6 +24,8 @@ export default function WaitlistModal() {
   const [state, setState] = useState<"idle" | "sending" | "done">("idle");
   const [error, setError] = useState<string | null>(null);
   const [picked, setPicked] = useState<string | null>(null);
+  const [custom, setCustom] = useState("");
+  const [showCustom, setShowCustom] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -223,6 +225,47 @@ export default function WaitlistModal() {
                           </button>
                         </li>
                       ))}
+
+                      <li>
+                        {!showCustom ? (
+                          <button
+                            type="button"
+                            onClick={() => setShowCustom(true)}
+                            className="border-ink/12 hover:border-ink hover:bg-mist w-full rounded-xl border border-dashed px-4 py-3 text-left text-[14px] font-semibold transition-colors"
+                          >
+                            Something else&hellip;
+                          </button>
+                        ) : (
+                          <form
+                            onSubmit={(e) => {
+                              e.preventDefault();
+                              const v = custom.trim();
+                              if (v) pick(v);
+                            }}
+                            className="flex gap-2"
+                          >
+                            <label htmlFor="waitlist-custom" className="sr-only">
+                              What happened
+                            </label>
+                            <input
+                              id="waitlist-custom"
+                              autoFocus
+                              maxLength={200}
+                              value={custom}
+                              onChange={(e) => setCustom(e.target.value)}
+                              placeholder="What happened, in your words"
+                              className="border-ink/15 focus:border-ink h-12 min-w-0 flex-1 rounded-xl border px-4 text-[14px] font-medium outline-none"
+                            />
+                            <button
+                              type="submit"
+                              disabled={!custom.trim()}
+                              className="bg-ink shrink-0 rounded-xl px-5 text-[14px] font-bold text-white transition-opacity hover:opacity-85 disabled:opacity-40"
+                            >
+                              Send
+                            </button>
+                          </form>
+                        )}
+                      </li>
                     </ul>
                   </>
                 )}
