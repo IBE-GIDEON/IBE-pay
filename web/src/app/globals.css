@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0d1016;
+  --color-ink-soft: #5a6472;
+  --color-brand: #ff2d46;
+  --color-mist: #f1f4f9;
+  --color-lilac: #e9eaf2;
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    /* The canvas behind the page — and anything revealed by overscrolling past
+       the footer — matches the footer exactly, so no seam appears at the end. */
+    background-color: #07080a;
+    overscroll-behavior-y: none;
+  }
+
+  body {
+    background: #ffffff;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  /* Anchor targets clear the 4rem sticky nav instead of hiding under it. */
+  :target,
+  section[id],
+  div[id] {
+    scroll-margin-top: 4.5rem;
+  }
+}
+
+/* Hero sky — layered gradients stand in for the cloud photograph.
+   Swap for a real image by setting a background-image on .sky. */
+.sky {
+  background:
+    radial-gradient(90% 60% at 18% 4%, #ffd6e0 0%, rgba(255, 214, 224, 0) 58%),
+    radial-gradient(80% 55% at 82% 0%, #e8dcff 0%, rgba(232, 220, 255, 0) 62%),
+    radial-gradient(120% 90% at 50% 100%, #d3e6ff 0%, rgba(211, 230, 255, 0) 72%),
+    linear-gradient(180deg, #b9d7f4 0%, #d9e8f8 46%, #eef3fa 100%);
+}
+
+.clouds::before,
+.clouds::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.75);
+  filter: blur(42px);
+  pointer-events: none;
+}
+
+.clouds::before {
+  inset: 12% auto auto -6%;
+  width: 46%;
+  height: 34%;
+}
+
+.clouds::after {
+  inset: 4% -8% auto auto;
+  width: 42%;
+  height: 30%;
+}
